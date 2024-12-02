@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1096660476559",
+    "project_id": "warteg-uts",
+    "storage_bucket": "warteg-uts.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1096660476559:android:7c3bef4e324f15116486fa",
+        "android_client_info": {
+          "package_name": "com.uts.warteg"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOTODT_TJVH6b1B-lED24zXzAzK5Oc7QY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1096660476559:android:5e8bdebf258649c36486fa",
+        "android_client_info": {
+          "package_name": "com.wartegku.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOTODT_TJVH6b1B-lED24zXzAzK5Oc7QY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
