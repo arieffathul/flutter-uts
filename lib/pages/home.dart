@@ -385,7 +385,7 @@ class HomePage extends StatelessWidget {
           return GestureDetector(
             onTap: () {
               // Aksi saat item makanan diklik, arahkan ke halaman Warteg
-              context.goNamed('warteg', extra: food);
+              context.pushNamed('detailmenu');
             },
             child: Container(
               width: 150, // Lebar setiap item

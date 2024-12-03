@@ -1,7 +1,6 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class Warteg extends StatefulWidget {
   const Warteg({super.key});
@@ -12,6 +11,8 @@ class Warteg extends StatefulWidget {
 
 class _WartegState extends State<Warteg> {
   bool isMenuSelected = true;
+
+  List<Map<String, dynamic>> cart = [];
 
   final List<Map<String, String>> menuData = [
     {
@@ -66,7 +67,7 @@ class _WartegState extends State<Warteg> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            context.goNamed('home');
+            Navigator.pop(context);
           },
         ),
         backgroundColor: Colors.blueAccent,
@@ -116,15 +117,18 @@ class _WartegState extends State<Warteg> {
               _buildMenuList(menuData)
             else
               _buildPaketList(paketData),
+            const SizedBox(height: 16)
           ],
         ),
       ),
-      // Floating action button for adding menu or package
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {}, // Function to handle adding
-        backgroundColor: Colors.blueAccent,
-        child: const Icon(Icons.shopping_basket_rounded),
-      ),
+      // Floating action button for shopping basket
+      floatingActionButton: isMenuSelected
+          ? FloatingActionButton(
+              onPressed: () => _showCartModal(context),
+              backgroundColor: Colors.blueAccent,
+              child: const Icon(Icons.shopping_basket_rounded),
+            )
+          : null, // Do not display the button when 'isMenuSelected' is false
     );
   }
 
@@ -198,7 +202,7 @@ class _WartegState extends State<Warteg> {
   // Fungsi untuk membangun daftar menu
   Widget _buildMenuList(List<Map<String, String>> data) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 7),
       child: GridView.builder(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
@@ -217,7 +221,7 @@ class _WartegState extends State<Warteg> {
               children: [
                 Image.network(
                   item['image']!,
-                  height: 100,
+                  height: 90,
                   width: double.infinity,
                   fit: BoxFit.cover,
                 ),
@@ -228,13 +232,36 @@ class _WartegState extends State<Warteg> {
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Text(
-                    item['price']!,
-                    style: const TextStyle(color: Colors.green),
-                  ),
-                ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Text(
+                        item['price']!,
+                        style: const TextStyle(color: Colors.green),
+                      ),
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.add_shopping_cart),
+                      onPressed: () {
+                        _addToCart(item);
+                      },
+                    ),
+                  ],
+                )
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                //   child: Text(
+                //     item['price']!,
+                //     style: const TextStyle(color: Colors.green),
+                //   ),
+                // ),
+                // IconButton(
+                //   icon: const Icon(Icons.add_shopping_cart),
+                //   onPressed: () {
+                //     _addToCart(item);
+                //   },
+                // ),
               ],
             ),
           );
@@ -243,58 +270,136 @@ class _WartegState extends State<Warteg> {
     );
   }
 
-  // Fungsi untuk membangun daftar paket
-  Widget _buildPaketList(List<Map<String, String>> data) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: GridView.builder(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          crossAxisSpacing: 16,
-          mainAxisSpacing: 16,
-        ),
-        itemCount: data.length,
-        itemBuilder: (context, index) {
-          final paket = data[index];
-          return Card(
-            elevation: 4,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Image.network(
-                  paket['image']!,
-                  height: 100,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
+  // Function to add items to the cart
+  void _addToCart(Map<String, String> menuItem) {
+    setState(() {
+      final existingItem = cart.firstWhere(
+          (item) => item['name'] == menuItem['name'],
+          orElse: () => {});
+      if (existingItem.isEmpty) {
+        cart.add({
+          'name': menuItem['name'],
+          'price': menuItem['price'],
+          'quantity': 1,
+        });
+      } else {
+        existingItem['quantity']++;
+      }
+    });
+  }
+
+  // Function to show the cart modal
+  void _showCartModal(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Keranjang Pesanan',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 16),
+              if (cart.isEmpty)
+                const Text('Keranjang pesanan kosong.')
+              else
+                ...cart.map((item) {
+                  return ListTile(
+                    title: Text(item['name']),
+                    subtitle:
+                        Text('Harga: ${item['price']} x ${item['quantity']}'),
+                    trailing: IconButton(
+                      icon: const Icon(Icons.remove),
+                      onPressed: () {
+                        setState(() {
+                          if (item['quantity'] > 1) {
+                            item['quantity']--;
+                          } else {
+                            cart.remove(item);
+                          }
+                        });
+                      },
+                    ),
+                  );
+                }),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                onPressed: () {
+                  // Place Order action
+                  // Handle placing order logic here
+                },
+                child: const Text('Pesan Sekarang'),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+}
+
+// Fungsi untuk membangun daftar paket
+Widget _buildPaketList(List<Map<String, String>> data) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 10),
+    child: GridView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        crossAxisSpacing: 16,
+        mainAxisSpacing: 16,
+      ),
+      itemCount: data.length,
+      itemBuilder: (context, index) {
+        final paket = data[index];
+        return Card(
+          elevation: 4,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Gambar tetap dengan tinggi yang sudah ada
+              Image.network(
+                paket['image']!,
+                height: 90,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  paket['name']!,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    paket['name']!,
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Text(
+                  paket['price']!,
+                  style: const TextStyle(color: Colors.green),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Text(
-                    paket['price']!,
-                    style: const TextStyle(color: Colors.green),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              ),
+              // Deskripsi dengan Expanded
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 8.0, vertical: 4.0),
                   child: Text(
                     paket['description']!,
                     style: const TextStyle(color: Colors.grey),
+                    maxLines: 2,
+                    overflow:
+                        TextOverflow.ellipsis, // Agar deskripsi tidak overflow
                   ),
                 ),
-              ],
-            ),
-          );
-        },
-      ),
-    );
-  }
+              ),
+            ],
+          ),
+        );
+      },
+    ),
+  );
 }

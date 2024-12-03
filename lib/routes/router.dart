@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:warteg_uts/pages/akun.dart';
 import 'package:warteg_uts/pages/home.dart';
 import 'package:warteg_uts/pages/login.dart';
+import 'package:warteg_uts/pages/pemesanan/detail_menu.dart';
 import 'package:warteg_uts/pages/pemesanan/detail_pesanan.dart';
 import 'package:warteg_uts/pages/pemesanan/warteg.dart';
 import 'package:warteg_uts/pages/register.dart';
@@ -86,6 +87,11 @@ final router = GoRouter(
       path: '/warteg',
       name: 'warteg',
       builder: (context, state) => const Warteg(),
+    ),
+    GoRoute(
+      path: '/detail-menu',
+      name: 'detailmenu',
+      builder: (context, state) => const DetailMenu(),
     ),
   ],
 );

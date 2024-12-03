@@ -18,19 +18,19 @@ class _MyWartegState extends State<MyWarteg> {
       'image':
           'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Ayam_goreng_in_Jakarta.JPG/800px-Ayam_goreng_in_Jakarta.JPG',
       'name': 'Ayam Goreng',
-      'price': 'Rp15.000',
+      'price': 'Rp3.000',
     },
     {
       'image':
           'https://upload.wikimedia.org/wikipedia/commons/2/21/Indonesian_fried_tempeh.JPG',
       'name': 'Tempe Goreng',
-      'price': 'Rp5.000',
+      'price': 'Rp1.000',
     },
     {
       'image':
           'https://awsimages.detik.net.id/community/media/visual/2021/08/06/ilustrasi-jengkol_43.jpeg?w=600&q=90',
       'name': 'Sayur Jengkol',
-      'price': 'Rp10.000',
+      'price': 'Rp2.000',
     },
   ];
 
