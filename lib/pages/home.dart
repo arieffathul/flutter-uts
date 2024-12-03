@@ -238,7 +238,7 @@ class HomePage extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: Container(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(12),
@@ -278,6 +278,7 @@ class HomePage extends StatelessWidget {
             const SizedBox(height: 16),
             // Content Section
             content,
+            const SizedBox(height: 16),
           ],
         ),
       ),
@@ -296,33 +297,35 @@ class HomePage extends StatelessWidget {
 
   Widget _categoryGrid() {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: GridView.builder(
-        physics: const NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 4,
-          crossAxisSpacing: 8,
-          mainAxisSpacing: 8,
+      padding: const EdgeInsets.symmetric(horizontal: 0),
+      child: Expanded(
+        child: GridView.builder(
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 4,
+            crossAxisSpacing: 3,
+            mainAxisSpacing: 10,
+          ),
+          itemCount: 8,
+          itemBuilder: (context, index) {
+            return Column(
+              children: [
+                const CircleAvatar(
+                  radius: 23,
+                  backgroundColor: Colors.lightBlue,
+                  child: Icon(Icons.fastfood, color: Colors.white),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  'Kategori ${index + 1}',
+                  style: const TextStyle(fontSize: 12),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            );
+          },
         ),
-        itemCount: 8,
-        itemBuilder: (context, index) {
-          return Column(
-            children: [
-              const CircleAvatar(
-                radius: 30,
-                backgroundColor: Colors.lightBlue,
-                child: Icon(Icons.fastfood, color: Colors.white),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                'Kategori ${index + 1}',
-                style: const TextStyle(fontSize: 12),
-                textAlign: TextAlign.center,
-              ),
-            ],
-          );
-        },
       ),
     );
   }
@@ -373,7 +376,7 @@ class HomePage extends StatelessWidget {
     ];
 
     return SizedBox(
-      height: 250, // Tinggi total kontainer
+      height: 200, // Tinggi total kontainer
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: foodData.length,
@@ -385,7 +388,7 @@ class HomePage extends StatelessWidget {
               context.goNamed('warteg', extra: food);
             },
             child: Container(
-              width: 180, // Lebar setiap item
+              width: 150, // Lebar setiap item
               margin: const EdgeInsets.only(left: 16), // Jarak antar item
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -408,7 +411,7 @@ class HomePage extends StatelessWidget {
                     ),
                     child: Image.network(
                       food['image']!,
-                      height: 120,
+                      height: 100,
                       width: double.infinity,
                       fit: BoxFit.cover,
                     ),

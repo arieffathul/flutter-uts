@@ -16,13 +16,13 @@ class _MyWartegState extends State<MyWarteg> {
   final List<Map<String, String>> menuData = [
     {
       'image':
-          'https://aslimasako.com/storage/page/new-title-14082023-075146.jpg',
+          'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Ayam_goreng_in_Jakarta.JPG/800px-Ayam_goreng_in_Jakarta.JPG',
       'name': 'Ayam Goreng',
       'price': 'Rp15.000',
     },
     {
       'image':
-          'https://www.astronauts.id/blog/wp-content/uploads/2023/12/Cara-Membuat-Resep-Tempe-Goreng-Tepung-Renyah-dan-Tahan-Lama.jpg',
+          'https://upload.wikimedia.org/wikipedia/commons/2/21/Indonesian_fried_tempeh.JPG',
       'name': 'Tempe Goreng',
       'price': 'Rp5.000',
     },
@@ -103,6 +103,8 @@ class _MyWartegState extends State<MyWarteg> {
               _buildMenuList(menuData)
             else
               _buildPaketList(paketData),
+
+            const SizedBox(height: 16)
           ],
         ),
       ),
@@ -187,7 +189,7 @@ class _MyWartegState extends State<MyWarteg> {
   // Fungsi untuk membangun daftar menu
   Widget _buildMenuList(List<Map<String, String>> data) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 7),
       child: GridView.builder(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
@@ -206,7 +208,7 @@ class _MyWartegState extends State<MyWarteg> {
               children: [
                 Image.network(
                   item['image']!,
-                  height: 100,
+                  height: 90,
                   width: double.infinity,
                   fit: BoxFit.cover,
                 ),
@@ -232,10 +234,9 @@ class _MyWartegState extends State<MyWarteg> {
     );
   }
 
-  // Fungsi untuk membangun daftar paket
   Widget _buildPaketList(List<Map<String, String>> data) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: GridView.builder(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
@@ -252,9 +253,10 @@ class _MyWartegState extends State<MyWarteg> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // Gambar tetap dengan tinggi yang sudah ada
                 Image.network(
                   paket['image']!,
-                  height: 100,
+                  height: 90,
                   width: double.infinity,
                   fit: BoxFit.cover,
                 ),
@@ -272,11 +274,18 @@ class _MyWartegState extends State<MyWarteg> {
                     style: const TextStyle(color: Colors.green),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Text(
-                    paket['description']!,
-                    style: const TextStyle(color: Colors.grey),
+                // Deskripsi dengan Expanded
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0, vertical: 4.0),
+                    child: Text(
+                      paket['description']!,
+                      style: const TextStyle(color: Colors.grey),
+                      maxLines: 2,
+                      overflow: TextOverflow
+                          .ellipsis, // Agar deskripsi tidak overflow
+                    ),
                   ),
                 ),
               ],

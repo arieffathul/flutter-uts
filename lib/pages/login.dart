@@ -19,6 +19,7 @@ class Login extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
+              const SizedBox(height: 30),
               // Header teks
               Container(
                 height: MediaQuery.of(context).size.height * 0.3,
@@ -34,7 +35,7 @@ class Login extends StatelessWidget {
               ),
               // Formulir dalam kartu
               Transform.translate(
-                offset: const Offset(0, 0),
+                offset: const Offset(0, 15),
                 child: Container(
                   width: double.infinity, // Memastikan lebar kartu penuh
                   decoration: const BoxDecoration(
