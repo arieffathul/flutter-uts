@@ -1,4 +1,4 @@
-# warteg_uts
+# uts_warteg
 
 A new Flutter project.
 

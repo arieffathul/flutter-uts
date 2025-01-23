@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:warteg_uts/bloc/auth/bloc/auth_bloc.dart';
-import 'package:warteg_uts/visibility_cubit.dart';
+import 'package:uts_warteg/bloc/auth/bloc/auth_bloc.dart';
+import 'package:uts_warteg/visibility_cubit.dart';
 
 class Login extends StatelessWidget {
   Login({super.key});

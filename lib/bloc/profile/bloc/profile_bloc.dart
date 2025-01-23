@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:meta/meta.dart';
-import 'package:warteg_uts/models/user_model.dart';
+import 'package:uts_warteg/models/user_model.dart';
 
 part 'profile_event.dart';
 part 'profile_state.dart';

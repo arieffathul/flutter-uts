@@ -3,9 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:warteg_uts/bloc/auth/bloc/auth_bloc.dart';
-import 'package:warteg_uts/components/custom_navbar.dart';
-import 'package:warteg_uts/components/hero_slider.dart';
+import 'package:uts_warteg/bloc/auth/bloc/auth_bloc.dart';
+import 'package:uts_warteg/components/custom_navbar.dart';
+import 'package:uts_warteg/components/hero_slider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -56,6 +56,12 @@ class HomePage extends StatelessWidget {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const CircularProgressIndicator();
                 }
+                final userData = snapshot.data!;
+                final userPhoto = userData['photoUrl'] ??
+                    'https://www.example.com/avatar.jpg';
+                final userName = userData['name'] ?? 'Guest'; // Ambil nama
+                final userEmail = userData['email'] ?? '';
+
                 if (snapshot.hasError || snapshot.data == null) {
                   return const CircleAvatar(
                     radius: 20,
@@ -64,10 +70,6 @@ class HomePage extends StatelessWidget {
                     ),
                   );
                 }
-
-                final userData = snapshot.data!;
-                final userName = userData['name'] ?? 'Guest'; // Ambil nama
-                final userEmail = userData['email'] ?? '';
 
                 return PopupMenuButton<int>(
                   onSelected: (int value) {
@@ -89,10 +91,7 @@ class HomePage extends StatelessWidget {
                           // Avatar User
                           CircleAvatar(
                             radius: 30,
-                            backgroundImage: NetworkImage(
-                              userData['avatarUrl'] ??
-                                  'https://www.example.com/avatar.jpg', // Placeholder jika avatar tidak tersedia
-                            ),
+                            backgroundImage: NetworkImage(userPhoto),
                           ),
                           const SizedBox(height: 8),
                           Text(userName,
@@ -129,10 +128,7 @@ class HomePage extends StatelessWidget {
                   ],
                   child: CircleAvatar(
                     radius: 20,
-                    backgroundImage: NetworkImage(
-                      userData['avatarUrl'] ??
-                          'https://www.example.com/avatar.jpg', // Placeholder jika avatar tidak tersedia
-                    ),
+                    backgroundImage: NetworkImage(userPhoto),
                   ),
                 );
               },

@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "1096660476559",
-    "project_id": "warteg-uts",
-    "storage_bucket": "warteg-uts.firebasestorage.app"
+    "project_number": "925956866229",
+    "project_id": "pm-1---task-management-9cfba",
+    "storage_bucket": "pm-1---task-management-9cfba.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1096660476559:android:7c3bef4e324f15116486fa",
+        "mobilesdk_app_id": "1:925956866229:android:9824714ee8414ef98efefc",
         "android_client_info": {
-          "package_name": "com.uts.warteg"
+          "package_name": "com.uts.wartegku"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCOTODT_TJVH6b1B-lED24zXzAzK5Oc7QY"
+          "current_key": "AIzaSyAKPB4-0lY25Rto6ZtmgSyzjCGkH6knpsA"
         }
       ],
       "services": {
@@ -26,15 +26,15 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1096660476559:android:5e8bdebf258649c36486fa",
+        "mobilesdk_app_id": "1:925956866229:android:2f7aa6c9b6d09a3e8efefc",
         "android_client_info": {
-          "package_name": "com.wartegku.app"
+          "package_name": "com.uts.wartegku"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCOTODT_TJVH6b1B-lED24zXzAzK5Oc7QY"
+          "current_key": "AIzaSyAKPB4-0lY25Rto6ZtmgSyzjCGkH6knpsA"
         }
       ],
       "services": {

@@ -1,15 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
-import 'package:warteg_uts/pages/akun.dart';
-import 'package:warteg_uts/pages/home.dart';
-import 'package:warteg_uts/pages/login.dart';
-import 'package:warteg_uts/pages/pemesanan/detail_menu.dart';
-import 'package:warteg_uts/pages/pemesanan/detail_pesanan.dart';
-import 'package:warteg_uts/pages/pemesanan/warteg.dart';
-import 'package:warteg_uts/pages/register.dart';
-import 'package:warteg_uts/pages/warteg/my_warteg.dart';
-import 'package:warteg_uts/pages/welcome.dart';
+import 'package:uts_warteg/pages/akun.dart';
+import 'package:uts_warteg/pages/home.dart';
+import 'package:uts_warteg/pages/login.dart';
+import 'package:uts_warteg/pages/pemesanan/detail_menu.dart';
+import 'package:uts_warteg/pages/pemesanan/detail_pesanan.dart';
+import 'package:uts_warteg/pages/pemesanan/warteg.dart';
+import 'package:uts_warteg/pages/register.dart';
+import 'package:uts_warteg/pages/warteg/my_warteg.dart';
+import 'package:uts_warteg/pages/welcome.dart';
 
 class AuthNotifier extends ChangeNotifier {
   final FirebaseAuth _auth = FirebaseAuth.instance;

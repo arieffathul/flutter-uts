@@ -1,4 +1,4 @@
-package com.wartegku.app
+package com.uts.wartegku
 
 import io.flutter.embedding.android.FlutterActivity
 

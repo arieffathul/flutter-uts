@@ -1,7 +1,7 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:warteg_uts/components/custom_navbar.dart';
+import 'package:uts_warteg/components/custom_navbar.dart';
 
 class MyWarteg extends StatefulWidget {
   const MyWarteg({super.key});

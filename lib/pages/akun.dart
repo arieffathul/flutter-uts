@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:go_router/go_router.dart';
-import 'package:warteg_uts/bloc/profile/bloc/profile_bloc.dart';
+import 'package:uts_warteg/bloc/profile/bloc/profile_bloc.dart';
 
 class Akun extends StatefulWidget {
   const Akun({super.key});

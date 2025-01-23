@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:warteg_uts/bloc/auth/bloc/auth_bloc.dart';
-import 'package:warteg_uts/bloc/profile/bloc/profile_bloc.dart';
-import 'package:warteg_uts/bloc/register/bloc/register_bloc.dart';
-import 'package:warteg_uts/routes/router.dart';
+import 'package:uts_warteg/bloc/auth/bloc/auth_bloc.dart';
+import 'package:uts_warteg/bloc/profile/bloc/profile_bloc.dart';
+import 'package:uts_warteg/bloc/register/bloc/register_bloc.dart';
+import 'package:uts_warteg/routes/router.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:warteg_uts/visibility_cubit.dart';
+import 'package:uts_warteg/visibility_cubit.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {

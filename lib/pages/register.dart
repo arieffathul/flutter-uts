@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:warteg_uts/bloc/register/bloc/register_bloc.dart';
-import 'package:warteg_uts/visibility_cubit.dart';
+import 'package:uts_warteg/bloc/register/bloc/register_bloc.dart';
+import 'package:uts_warteg/visibility_cubit.dart';
 
 class Register extends StatelessWidget {
   Register({super.key});

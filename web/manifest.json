@@ -1,6 +1,6 @@
 {
-    "name": "warteg_uts",
-    "short_name": "warteg_uts",
+    "name": "uts_warteg",
+    "short_name": "uts_warteg",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
